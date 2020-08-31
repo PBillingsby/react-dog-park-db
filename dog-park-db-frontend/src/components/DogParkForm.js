@@ -5,8 +5,10 @@ export default class DogParkForm extends Component {
     super(props);
     this.state = {
       isSubmitted: false,
-      dogParkName: "",
-      address: ""
+      name: "",
+      address: "",
+      city: "",
+      rating: ""
     };
   }
   handleSubmit = event => {
@@ -33,8 +35,8 @@ export default class DogParkForm extends Component {
             <label>Name:</label>
             <input
               type="text"
-              name="dogParkName"
-              value={this.state.dogParkName}
+              name="name"
+              value={this.state.name}
               onChange={this.handleChange}
             />
           </div>
@@ -44,6 +46,25 @@ export default class DogParkForm extends Component {
               type="text"
               name="address"
               value={this.state.address}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>City:</label>
+            <input
+              type="text"
+              name="city"
+              value={this.state.city}
+              onChange={this.handleChange}
+            />
+          </div>
+          <div className="form-group">
+            <label>Rating:</label>
+            <input
+              type="number"
+              max="5"
+              name="rating"
+              value={this.state.rating}
               onChange={this.handleChange}
             />
           </div>

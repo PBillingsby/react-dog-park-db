@@ -2,13 +2,9 @@ import React, { Component } from "react";
 
 class FormHandle extends Component {
   componentDidMount() {
-    let body = {
-      name: this.props.dogPark.dogParkName,
-      address: this.props.dogPark.address
-    };
     fetch("http://localhost:3001/dog_parks", {
       method: "POST",
-      body: JSON.stringify(body),
+      body: JSON.stringify(this.props),
       headers: {
         "Content-Type": "application/json"
       }
