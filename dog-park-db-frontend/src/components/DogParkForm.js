@@ -4,19 +4,26 @@ export default class DogParkForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isSubmitted: false,
       dogParkName: "",
       address: ""
     };
   }
   handleSubmit = event => {
     event.preventDefault();
-    return <FormHandle props={this.state} />;
+    this.setState({
+      isSubmitted: true
+    });
+    this.sendToFormHandle(this.state);
   };
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
+  sendToFormHandle() {
+    return <FormHandle dogPark={this.state} />;
+  }
   render() {
     return (
       <div className="dp-form">
@@ -42,6 +49,7 @@ export default class DogParkForm extends Component {
           </div>
           <input type="submit" />
         </form>
+        {this.state.isSubmitted && this.sendToFormHandle()}
       </div>
     );
   }
