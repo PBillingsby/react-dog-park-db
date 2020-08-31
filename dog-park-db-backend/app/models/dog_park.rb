@@ -1,3 +1,3 @@
-class DogPark > ApplicationRecord
-  
+class DogPark < ApplicationRecord
+
 end
