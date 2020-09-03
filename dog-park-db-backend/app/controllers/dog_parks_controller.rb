@@ -10,6 +10,6 @@ class DogParksController < ApplicationController
   end
 
   def dog_park_params
-    params.require(:dogPark).permit(:name, :address, :city, :rating, :parkDescription)
+    params.require(:dog_park).permit(:name, :address, :city, :rating, :park_description)
   end
 end
