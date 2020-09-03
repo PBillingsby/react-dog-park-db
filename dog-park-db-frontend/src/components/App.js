@@ -1,14 +1,11 @@
 import React from "react";
-import DogParkForm from "./DogParkForm";
-import DogParkButton from "./DogParkButton";
+import DogParks from "./DogParks";
 import "./../App.css";
 
 function App() {
   return (
     <div className="App">
-      <DogParkForm />
-      <br />
-      <DogParkButton />
+      <DogParks />
     </div>
   );
 }
