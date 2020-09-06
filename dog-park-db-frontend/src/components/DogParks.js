@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DogParkForm from "./DogParkForm";
+import DogPark from "./DogPark";
 export default class DogParks extends Component {
   state = {
     parks: []
@@ -25,12 +26,29 @@ export default class DogParks extends Component {
       .then(park => console.log(park));
   };
 
-  componentDidMount() {
+  fetchDogParks() {
     fetch("http://localhost:3001/dog_parks")
       .then(resp => resp.json())
-      .then(parks => this.setState({ parks: parks }));
+      .then(dogParks => this.setState({ parks: dogParks }));
+  }
+
+  componentDidMount() {
+    this.fetchDogParks();
+  }
+
+  componentDidUpdate() {
+    return this.state.parks.map(dp => <DogPark dp={dp} />);
   }
   render() {
-    return <DogParkForm submitHandle={e => this.submitHandle(e)} />;
+    return (
+      <>
+        <div className="row">
+          {this.state.parks.map(dp => (
+            <DogPark key={dp.id} dp={dp} />
+          ))}
+        </div>
+        <DogParkForm submitHandle={e => this.submitHandle(e)} />
+      </>
+    );
   }
 }
