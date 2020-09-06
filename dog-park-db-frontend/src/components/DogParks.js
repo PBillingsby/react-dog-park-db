@@ -42,6 +42,13 @@ export default class DogParks extends Component {
   render() {
     return (
       <>
+        <select>
+          {this.state.parks.map(dp => (
+            <option key={dp.id} value={dp.city}>
+              {dp.city}
+            </option>
+          ))}
+        </select>
         <div className="row">
           {this.state.parks.map(dp => (
             <DogPark key={dp.id} dp={dp} />
